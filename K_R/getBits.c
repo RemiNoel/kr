@@ -9,15 +9,13 @@ unsigned getBits(unsigned, int, int);
 unsigned getBits_2(unsigned, int, int, unsigned);
 unsigned invert(unsigned, int, int);
 unsigned rightrot(unsigned, int);
-
+int bitcount(unsigned);
 
 int main(){
 	unsigned x;
 	unsigned y;
 	int n;
 	int p;
-
-	printf("%u\n", UCHAR_MAX);
 
 	printf("This programs does bit manipulation on a number that you enter. \n");
 	printf("Enter x: ");
@@ -31,7 +29,9 @@ int main(){
 
 	//printf("Your test number 'x' = %u has been processed to the number: %u.\n", x, getBits_2(x,p,n,y));
 	//printf("Your test number 'x' = %u has been processed to the number (inverted n-bits): %u.\n", x, invert(x,p,n));
-	printf("Your test number 'x' = %u has been processed to the number (right rotation): %u.\n", x, rightrot(x,n));
+	//printf("Your test number 'x' = %u has been processed to the number (right rotation): %u.\n", x, rightrot(x,n));
+	printf("Your test number 'x' = %u has << %d >> bits that are 1s.\n", x, bitcount(x));
+
 	return 0;
 }
 
@@ -133,4 +133,14 @@ unsigned rightrot(unsigned x, int n){
 	
 
 	return xRightRot | xLeftBits;
+}
+
+// Returns the number of 1s (ones) a number contains
+int bitcount(unsigned x){
+	int b = 0;
+	// Loop until x = 0. Remove the rightmost bit
+	for(; x != 0; x &= (x-1))
+		b++;
+
+	return b;
 }
