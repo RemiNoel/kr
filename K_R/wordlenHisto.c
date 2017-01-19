@@ -1,4 +1,7 @@
 #include <stdio.h>
+#include <ctype.h>
+
+#define ISCHAR 
 
 void printWordLenHisto(int[]);
 void printfreqCharHisto(int[]);
@@ -9,14 +12,20 @@ int main(void){
 	short currentwlen = 0;	// current word length
 	char c = 0;		// current character taken from the stream
 
+	printf("This program prints a histogram of the frequency of letters in a written stream.\n\n");
+	printf("Write anything than press CTRL+D (Linux) or CTRL+Z (Windows) to see the histogram.\n");
+
 	while((c = getchar()) != EOF){
 		if(c == ' ' || c == '\n' || c == '\t'){
 			++nword[currentwlen - 1];
 			currentwlen = 0;
 		}
-		else
+		else if(isalpha(c)){
+			if(isupper(c))
+				c = tolower(c);
 			++nchar[c - 'a'];
 			++currentwlen;
+		}
 	}
 	//printWordLenHisto(nword);
 	printfreqCharHisto(nchar);
