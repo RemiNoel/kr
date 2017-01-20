@@ -42,7 +42,7 @@ void expand(char command[], char strList[]){
 			
 			This part will work with alpha values
 			*/
-		if(isalpha(command[i]) && command[i+1] == '-' && isalpha(command[i+2])){
+		if(isalpha(command[i]) && command[i+1] == '-' && isalpha(command[i+2]) && command[i] < command[i+2]){
 			ch = command[i];
 			// expand the command into a chain of character
 			for(; ch < command[i+2]; ++ch, ++j){
@@ -55,7 +55,7 @@ void expand(char command[], char strList[]){
 		}
 
 			//This part will work with numerical values
-		else if(isdigit(command[i]) && command[i+1] == '-' && isdigit(command[i+2])){
+		else if(isdigit(command[i]) && command[i+1] == '-' && isdigit(command[i+2]) && command[i] < command[i+2]){
 			ch = command[i];
 			// expand the command into a chain of character
 			for(; ch < command[i+2]; ++ch, ++j){
