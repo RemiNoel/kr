@@ -1,5 +1,5 @@
-#ifndef MY_STACK_H
-#define MY_STACK_H
+#ifndef CALC_H
+#define CALC_H
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -57,4 +57,4 @@ void findFunction(char substr[]);
 // Print the commands
 void showCommands(void);
 
-#endif //!MY_STACK_H
+#endif //!CALC_H
